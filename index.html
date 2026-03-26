@@ -162,7 +162,7 @@ Connection: close</code></pre>
                 <p><strong>Результат (скриншот l3.png):</strong></p>
 <ul>
                     <li>Статус: <code>HTTP/1.1 200 OK</code> – файл существует.</li>
-                    <li>Заголовок <code>Content-Length</code> – размер файла в байтах.</li>
+                    <li>Заголовок <code>Content-Length</code> – размер файла в байтах 2.</li>
                     <li>Тип файла: <code>Content-Type: application/x-gzip</code>.</li>
                 </ul>
             </div>
@@ -187,7 +187,7 @@ Connection: close</code></pre>
                 <ul>
                     <li>Статус: <code>HTTP/1.1 200 OK</code>.</li>
                     <li>Заголовок <code>Content-Type: image/png</code> – медиатип PNG.</li>
-                    <li>Размер: <code>Content-Length</code> байт.</li>
+                    <li>Размер: <code>Content-Length 452195</code> байт.</li>
                 </ul>
             </div>
             <div class="screenshot">
@@ -241,7 +241,7 @@ Connection: close</code></pre>
                 <ul>
                     <li>Статус: <code>HTTP/1.1 206 Partial Content</code> – частичное содержимое.</li>
                     <li>Заголовок <code>Content-Range: bytes 0-99/(размер файла)</code>.</li>
-<li><code>Content-Length: 100</code> – длина переданных данных.</li>
+<li><code>Content-Length: 2</code> – длина переданных данных.</li>
                     <li>Тело содержит первые 100 байт файла (бинарные данные, отображаемые как нечитаемые символы).</li>
                 </ul>
             </div>
