@@ -1,0 +1,30 @@
+GET / HTTP/1.0
+
+GET /web_lab2/index.php HTTP/1.1
+Host: u82460.kubsu-dev.ru
+Connection: close
+
+HEAD /lab2web/file.tar.gz HTTP/1.1
+Host: u82460.kubsu-dev.ru
+Connection: close
+
+HEAD /lab2web/image.png HTTP/1.1
+Host: u82460.kubsu-dev.ru
+Connection: close
+
+POST /lab2web/index.php HTTP/1.1
+Host: u82460.kubsu-dev.ru
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 12
+Connection: close
+
+comment=Hello
+
+GET /lab2web/file.tar.gz HTTP/1.1
+Host: u82460.kubsu-dev.ru
+Range: bytes=0-99
+Connection: close
+
+HEAD /lab2web/index.php HTTP/1.1
+Host: u82460.kubsu-dev.ru
+Connection: close

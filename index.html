@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отчёт по лабораторной работе №2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Отчёт по лабораторной работе №2</h1>
+        
+
+        
+        <section class="task">
+            <h2>Подготовка к выполнению работы</h2>
+
+            
+            <div class="subtask">
+                <h3>Содержимое локальной папки</h3>
+                <div class="description">
+                    <p>В папке <code>web_lab2</code> находятся все необходимые файлы: скриншоты, <code>file.tar.gz</code>, <code>image.png</code>, <code>index.php</code>, <code>index.html</code> и <code>style.css</code>.</p>
+                </div>
+                <div class="screenshot">
+                    <img src="01.png" alt="Список файлов">
+                    <p class="caption">Скриншот 01: Содержимое папки web_lab2</p>
+                </div>
+            </div>
+
+           
+            <div class="subtask">
+                <h3>Инициализация Git и отправка на GitHub</h3>
+                <div class="command">
+                    <strong>Команды:</strong>
+                    <pre><code>git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/nikita1128343/laba2web.git
+git push -u origin main</code></pre>
+                </div>
+                <div class="description">
+                    <p>Локальный репозиторий создан, все файлы добавлены, создан коммит. После связывания с удалённым репозиторием изменения успешно отправлены на GitHub.</p>
+                </div>
+                <div class="screenshot">
+                    <img src="02.png" alt="Git push">
+                    <p class="caption">Скриншот 02: Отправка файлов на GitHub</p>
+                </div>
+            </div>
+
+           
+            <div class="subtask">
+                <h3>Клонирование репозитория на сервер</h3>
+                <div class="command">
+                    <strong>Команды на сервере:</strong>
+                    <pre><code>git clone https://github.com/nikita1128343/laba2web.git
+mkdir -p ~/www/web_lab2
+cp -r ~/laba2web/* ~/www/web_lab2/</code></pre>
+                </div>
+                <div class="description">
+                    <p>Репозиторий склонирован в домашнюю директорию, создан каталог <code>~/www/web_lab2</code>, файлы скопированы в веб-доступное место.</p>
+                </div>
+                <div class="screenshot">
+                    <img src="04.png" alt="Клонирование на сервере">
+                    <p class="caption">Скриншот 04: Клонирование и копирование</p>
+                </div>
+            </div>
+
+            
+            <div class="subtask">
+                <h3>Подготовка HTTP-запросов</h3>
+                <div class="description">
+                    <p>Все запросы для пунктов 1–7 были заранее набраны в текстовом редакторе для удобного копирования в PuTTY.</p>
+                </div>
+                <div class="screenshot">
+                    <img src="05.png" alt="Тексты запросов">
+                    <p class="caption">Скриншот 05: Запросы в блокноте</p>
+                </div>
+            </div>
+
+           
+            <div class="subtask">
+                <h3>Настройка PuTTY для подключения</h3>
+                <div class="description">
+                    <p>Для отправки запросов используется PuTTY в режиме <strong>Raw</strong> (прямое TCP-соединение). Адрес: <code>u82460.kubsu-dev.ru</code>, порт 80.</p>
+                </div>
+                <div class="screenshot">
+                    <img src="06.png" alt="Настройки PuTTY">
+                    <p class="caption">Скриншот 06: Конфигурация PuTTY</p>
+                </div>
+            </div>
+<div class="subtask">
+                <h3>Готовое окно PuTTY</h3>
+                <div class="description">
+                    <p>После открытия соединения появляется пустое окно, готовое для вставки HTTP-запросов (правая кнопка мыши).</p>
+                </div>
+                <div class="screenshot">
+                    <img src="07.png" alt="Пустое окно PuTTY">
+                    <p class="caption">Скриншот 07: Окно PuTTY ожидает запрос</p>
+                </div>
+            </div>
+        </section>
+
+      
+        <section class="task">
+            <h2>Пункт 1. Получить главную страницу методом GET в протоколе HTTP/1.0</h2>
+            <div class="command">
+                <strong>Запрос:</strong>
+                <pre><code>GET / HTTP/1.0</code></pre>
+            </div>
+            <div class="description">
+                <p><strong>Что делает:</strong> Запрос корневой директории сайта по протоколу HTTP/1.0. Сервер возвращает содержимое, которое в данном случае является стандартной страницей Apache (так как в корне нет индексного файла).</p>
+                <p><strong>Результат (скриншот l1.png):</strong></p>
+                <ul>
+                    <li>Статус: <code>HTTP/1.1 200 OK</code> – запрос выполнен успешно.</li>
+                    <li>Заголовки: <code>Server: Apache/2.4.58 (Ubuntu)</code>, <code>Content-Length: 10671</code>, <code>Content-Type: text/html; charset=UTF-8</code>.</li>
+                    <li>Тело ответа содержит стандартную страницу-заглушку Apache2 Ubuntu Default Page.</li>
+                </ul>
+            </div>
+            <div class="screenshot">
+                <img src="l1.png" alt="GET / HTTP/1.0">
+                <p class="caption">Скриншот 1: GET / HTTP/1.0 </p>
+            </div>
+        </section>
+
+        
+        <section class="task">
+            <h2>Пункт 2. Получить внутреннюю страницу методом GET в протоколе HTTP/1.1</h2>
+            <div class="command">
+                <strong>Запрос:</strong>
+                <pre><code>GET /web_lab2/index.php HTTP/1.1
+Host: u82460.kubsu-dev.ru
+Connection: close</code></pre>
+            </div>
+            <div class="description">
+                <p><strong>Что делает:</strong> Запрашивает файл <code>index.php</code> из каталога <code>/web_lab2/</code>. Скрипт специально настроен так, что возвращает статус 404, но при этом выполняет код и генерирует тело ответа.</p>
+                <p><strong>Результат (скриншот l2.png):</strong></p>
+                <ul>
+                    <li>Статус: <code>HTTP/1.1 404 Not Found</code> – задан самим скриптом.</li>
+                    <li>Заголовок <code>Content-Type: text/html; charset=UTF-8</code>.</li>
+                    <li>Тело ответа содержит вывод скрипта: <code>Array ( ) Привет, мир!</code> (пустой массив <code>$_POST</code> и строка).</li>
+                </ul>
+                <p><em>Примечание: статус 404 не мешает получению содержимого – задание требует сам факт ответа и его анализ.</em></p>
+            </div>
+            <div class="screenshot">
+                <img src="l2.png" alt="GET /web_lab2/index.php">
+                <p class="caption">Скриншот 2: GET /web_lab2/index.php </p>
+            </div>
+        </section>
+
+        
+        <section class="task">
+            <h2>Пункт 3. Определить размер файла file.tar.gz, не скачивая его</h2>
+            <div class="command">
+                <strong>Запрос:</strong>
+                <pre><code>HEAD /web_lab2/file.tar.gz HTTP/1.1
+Host: u82460.kubsu-dev.ru
+Connection: close</code></pre>
+            </div>
+            <div class="description">
+                <p><strong>Что делает:</strong> Метод <code>HEAD</code> возвращает только заголовки, без тела. Позволяет узнать размер файла из поля <code>Content-Length</code>.</p>
+                <p><strong>Результат (скриншот l3.png):</strong></p>
+<ul>
+                    <li>Статус: <code>HTTP/1.1 200 OK</code> – файл существует.</li>
+                    <li>Заголовок <code>Content-Length</code> – размер файла в байтах.</li>
+                    <li>Тип файла: <code>Content-Type: application/x-gzip</code>.</li>
+                </ul>
+            </div>
+            <div class="screenshot">
+                <img src="l3.png" alt="HEAD /web_lab2/file.tar.gz">
+                <p class="caption">Скриншот 3: HEAD /web_lab2/file.tar.gz </p>
+            </div>
+        </section>
+
+        
+        <section class="task">
+            <h2>Пункт 4. Определить медиатип ресурса /image.png</h2>
+            <div class="command">
+                <strong>Запрос:</strong>
+                <pre><code>HEAD /web_lab2/image.png HTTP/1.1
+Host: u82460.kubsu-dev.ru
+Connection: close</code></pre>
+            </div>
+            <div class="description">
+                <p><strong>Что делает:</strong> Аналогично пункту 3, определяем MIME-тип изображения.</p>
+                <p><strong>Результат (скриншот l4.png):</strong></p>
+                <ul>
+                    <li>Статус: <code>HTTP/1.1 200 OK</code>.</li>
+                    <li>Заголовок <code>Content-Type: image/png</code> – медиатип PNG.</li>
+                    <li>Размер: <code>Content-Length</code> байт.</li>
+                </ul>
+            </div>
+            <div class="screenshot">
+                <img src="l4.png" alt="HEAD /web_lab2/image.png">
+                <p class="caption">Скриншот 4: HEAD /web_lab2/image.png </p>
+            </div>
+        </section>
+
+        
+        <section class="task">
+            <h2>Пункт 5. Отправить комментарий на сервер по адресу /index.php (POST)</h2>
+            <div class="command">
+                <strong>Запрос:</strong>
+                <pre><code>POST /web_lab2/index.php HTTP/1.1
+Host: u82460.kubsu-dev.ru
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 12
+Connection: close
+
+comment=Hello</code></pre>
+                <p><em>Тело запроса: <code>comment=Hello</code> (длина 12 байт).</em></p>
+            </div>
+            <div class="description">
+                <p><strong>Что делает:</strong> Отправляет POST-данные (имитация формы) на <code>index.php</code>. Скрипт возвращает статус 404 (задано в коде), но выводит содержимое массива <code>$_POST</code>.</p>
+                <p><strong>Результат (скриншот l5.png):</strong></p>
+                <ul>
+                    <li>Статус: <code>HTTP/1.1 404 Not Found</code> (задан скриптом).</li>
+                    <li>Заголовок <code>Content-Type: text/html; charset=UTF-8</code>.</li>
+                    <li>Тело ответа: <code>Array ( [comment] => Hell ) Привет, мир!</code> – значение поля <code>comment</code> частично отобразилось (обрезано из-за особенностей вывода).</li>
+                </ul>
+            </div>
+            <div class="screenshot">
+                <img src="l5.png" alt="POST /web_lab2/index.php">
+                <p class="caption">Скриншот 5: POST /web_lab2/index.php </p>
+            </div>
+        </section>
+
+        
+        <section class="task">
+            <h2>Пункт 6. Получить первые 100 байт файла /file.tar.gz</h2>
+            <div class="command">
+                <strong>Запрос:</strong>
+                <pre><code>GET /web_lab2/file.tar.gz HTTP/1.1
+Host: u82460.kubsu-dev.ru
+Range: bytes=0-99
+Connection: close</code></pre>
+            </div>
+            <div class="description">
+                <p><strong>Что делает:</strong> Заголовок <code>Range</code> запрашивает только указанный диапазон байт – первые 100 байт архива.</p>
+                <p><strong>Результат (скриншот l6.png):</strong></p>
+                <ul>
+                    <li>Статус: <code>HTTP/1.1 206 Partial Content</code> – частичное содержимое.</li>
+                    <li>Заголовок <code>Content-Range: bytes 0-99/(размер файла)</code>.</li>
+<li><code>Content-Length: 100</code> – длина переданных данных.</li>
+                    <li>Тело содержит первые 100 байт файла (бинарные данные, отображаемые как нечитаемые символы).</li>
+                </ul>
+            </div>
+            <div class="screenshot">
+                <img src="l6.png" alt="GET с Range">
+                <p class="caption">Скриншот 6: GET /web_lab2/file.tar.gz с Range</p>
+            </div>
+        </section>
+
+        <section class="task">
+            <h2>Пункт 7. Определить кодировку ресурса /index.php</h2>
+            <div class="command">
+                <strong>Запрос:</strong>
+                <pre><code>HEAD /web_lab2/index.php HTTP/1.1
+Host: u82460.kubsu-dev.ru
+Connection: close</code></pre>
+            </div>
+            <div class="description">
+                <p><strong>Что делает:</strong> Запрос HEAD для получения только заголовков. Позволяет узнать кодировку из поля <code>Content-Type</code>.</p>
+                <p><strong>Результат (скриншот l7.png):</strong></p>
+                <ul>
+                    <li>Статус: <code>HTTP/1.1 404 Not Found</code> (задан скриптом).</li>
+                    <li>Заголовок <code>Content-Type: text/html; charset=UTF-8</code> – кодировка <strong>UTF-8</strong> указана явно.</li>
+                </ul>
+            </div>
+            <div class="screenshot">
+                <img src="l7.png" alt="HEAD /web_lab2/index.php">
+                <p class="caption">Скриншот 7: HEAD /web_lab2/index.php</p>
+            </div>
+        </section>
+
+        
+        <section class="task">
+            <h2>Обновление репозитория и сервера после выполнения всех пунктов</h2>
+
+            <div class="subtask">
+                <h3>Добавление новых скриншотов в Git (локально)</h3>
+                <div class="description">
+                    <p>После выполнения всех запросов и создания дополнительных скриншотов они были добавлены в локальный репозиторий, закоммичены и отправлены на GitHub.</p>
+                </div>
+                <div class="screenshot">
+                    <img src="f1.png" alt="git add, commit, push">
+                    <p class="caption">Скриншот f1: Добавление новых файлов и push</p>
+                </div>
+            </div>
+
+            <div class="subtask">
+                <h3>Обновление файлов на сервере</h3>
+                <div class="description">
+                    <p>На сервере выполнен <code>git pull</code> в папке с репозиторием. После получения обновлений файлы скопированы в каталог <code>~/www/web_lab2</code>.</p>
+                </div>
+                <div class="screenshot">
+                    <img src="f2.png" alt="git pull и копирование">
+                    <p class="caption">Скриншот f2: Обновление на сервере</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
